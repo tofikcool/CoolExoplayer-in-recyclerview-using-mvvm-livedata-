@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="data"
+            type="com.example.exoplayerdemo.view.HomeData" />
+
+        <variable
+            name="holder"
+            type="com.example.exoplayerdemo.view.HomeViewHolder" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+
+        android:background="?selectableItemBackground"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:cardCornerRadius="3.8dp"
+            app:cardUseCompatPadding="true">
+
+            <!--<ImageView
+                android:id="@+id/ivImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:imageUrl="@{data.video}"
+                tools:src="@drawable/ic_launcher_background" />-->
+            <com.google.android.exoplayer2.ui.PlayerView
+                android:id="@+id/player"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="200dp"
+                app:player_layout_id="@layout/coolexo_player_view"
+                app:resize_mode="fixed_height"
+                app:surface_type="texture_view"
+                app:use_controller="true"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="3.5dp"
+            android:paddingEnd="3.5dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_medium"
+                android:lineSpacingExtra="18.8sp"
+                android:text="@{data.videoName}"
+                android:textColor="@color/black"
+                android:textSize="13.3sp"
+                tools:text="Ray-Ban RB3025" />
+
+           <!-- <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:favourite="@{data.isFavourite}"
+                app:srcCompat="@drawable/v_ic_favourite" />-->
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

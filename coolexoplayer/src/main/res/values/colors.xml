@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/white</color>
+    <color name="colorPrimaryDark">@color/black</color>
+    <color name="colorAccent">@color/black</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="black2">#333333</color>
+    <color name="black3">#202020</color>
+    <color name="black2_opt_60">#99333333</color>
+    <color name="warm_grey">#999999</color>
+    <color name="denim_blue">#3b579d</color>
+    <color name="pale_red">#dc4e41</color>
+    <color name="brownish_grey">#666666</color>
+    <color name="pinkish_grey">#bbbbbb</color>
+    <color name="warm_grey_two">#707070</color>
+    <color name="azul">#1169e2</color>
+    <color name="azul_two">#2978e5</color>
+    <color name="red">#ff0000</color>
+    <color name="red2">#ea0000</color>
+    <color name="separator">#CBCBCB</color>
+    <color name="seaweed">#16cc7f</color>
+    <color name="mango">#ffac27</color>
+    <color name="background">#f9f9f9</color>
+</resources>

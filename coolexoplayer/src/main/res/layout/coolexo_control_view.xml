@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:layout_marginTop="4dp"
+    android:background="#CC000000"
+    android:gravity="center_vertical"
+    android:layoutDirection="ltr"
+    android:orientation="horizontal"
+    android:theme="@style/Theme.AppCompat"
+    tools:ignore="UnusedAttribute">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/exo_play"
+        style="@style/ToroMediaButton.Play"
+        tools:ignore="ContentDescription" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/exo_pause"
+        style="@style/ToroMediaButton.Pause"
+        tools:ignore="ContentDescription"
+        tools:visibility="gone" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/exo_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textColor="#FFBEBEBE"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:text="1:25" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:text="/"
+        android:textColor="#FFBEBEBE"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/exo_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textColor="#FFBEBEBE"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:text="5:25" />
+
+    <com.google.android.exoplayer2.ui.DefaultTimeBar
+        android:id="@id/exo_progress"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_weight="1" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/exo_volume_up"
+        style="@style/ToroMediaButton.VolumeUp"
+        tools:ignore="ContentDescription" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/exo_volume_off"
+        style="@style/ToroMediaButton.VolumeOff"
+        tools:ignore="ContentDescription"
+        tools:visibility="gone" />
+
+    <com.google.android.exoplayer2.ui.DefaultTimeBar
+        android:id="@id/volume_bar"
+        android:layout_width="80dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

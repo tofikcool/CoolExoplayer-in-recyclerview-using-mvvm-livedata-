@@ -1,0 +1,145 @@
+<resources>
+    <string name="app_name">Exoplayer</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_pwd">Forgot Password?</string>
+    <string name="or_sign_in_with">Or sign in with</string>
+    <string name="facebook">Facebook</string>
+    <string name="google">Google</string>
+    <string name="signup_hyperlink">Don\'t have an account yet? <u><font color='#1169e2'>Sign Up</font></u></string>
+    <string name="fast_name">Fast Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="or_signup">Or sign up with</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="please_enter_your_registered_email">Please enter your registered email ID and we’ll send you a verification link to reset your password</string>
+    <string name="i_am_agree_with_the_terms_amp_conditions">I am agree with the <u><font color='#1169e2'>Terms &amp; Conditions.</font></u></string>
+    <string name="send">Send</string>
+    <string name="shop_by_categories">Shop by Categories</string>
+    <string name="add_to_bag">+ Add to Bag</string>
+    <string name="view_all_underline"><u>View All</u></string>
+    <string name="favourite">Favourite</string>
+    <string name="search">Search</string>
+    <string name="notification">Notification</string>
+    <string name="home">Home</string>
+    <string name="category">Category</string>
+    <string name="profile">Profile</string>
+    <string name="bag">Bag</string>
+    <string name="added_to_bag">Added to Bag</string>
+    <string name="add_to_wishlist">+ Add to Wishlist</string>
+    <string name="sold_by_s">Sold by: <font color='#333333'><b>WandWagon</b></font></string>
+    <string name="product_code_s">Product code: <font color='#333333'><b>4526543</b></font></string>
+    <string name="share">Share</string>
+    <string name="product_details">Product Details</string>
+    <string name="view_all_reviews">View all reviews</string>
+    <string name="my_order">My Order</string>
+    <string name="my_orders">My Orders</string>
+    <string name="faq">FAQ</string>
+    <string name="help">Help</string>
+    <string name="payment_options">Payment Options</string>
+    <string name="terms_amp_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="about_us">About Us</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="view_supplier_information">View Supplier Information</string>
+    <string name="similar_products">Similar Products</string>
+    <string name="view_all_orders">View All Orders</string>
+    <string name="payment">Payment</string>
+    <string name="view_all_cards">View All Cards</string>
+    <string name="my_review">My Review</string>
+    <string name="view_your_review">View Your Review</string>
+    <string name="my_address">My Address</string>
+    <string name="_s_more">2 More</string>
+    <string name="coupons">Coupons</string>
+    <string name="view_coupons">View Coupons</string>
+    <string name="log_out">Log Out</string>
+    <string name="dummy_image">https://us.123rf.com/450wm/rido/rido1501/rido150100041/35534690-portrait-of-smiling-young-woman-wearing-sunglasses.jpg?ver=6</string>
+    <string name="save_details">Save Details</string>
+    <string name="gender">Gender</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email_address">Email Address</string>
+    <string name="change_password">Change Password</string>
+    <string name="apply">Apply</string>
+    <string name="coupon_code">Coupon Code</string>
+    <string name="place_order">Place Order</string>
+    <string name="order_details">Order Details</string>
+    <string name="track_order">Track Order</string>
+    <string name="exchange">Exchange</string>
+    <string name="order_return">Return</string>
+    <string name="wrt_review">Write Review</string>
+    <string name="rate_this_product">Rate this Product</string>
+    <string name="excellent_product">Excellent Product</string>
+    <string name="loved_it">Loved it</string>
+    <string name="exp_delivery">Excellent Delivery</string>
+    <string name="write_review">Write a Review</string>
+    <string name="submit">Submit</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="plus_add_card">+ Add Card</string>
+    <string name="plus_add_address">+ Add Address</string>
+    <string name="my_cards">My Cards</string>
+    <string name="bank_accounts_and_cards">Bank Accounts and Cards</string>
+    <string name="we_keep_your_financial_information_encrypted">We keep your financial information encrypted.</string>
+    <string name="card_number">Card Number</string>
+    <string name="name_on_card">Name on Card</string>
+    <string name="set_as_primary_card">Set as Primary Card</string>
+    <string name="save_card">Save Card</string>
+    <string name="add_new_card">Add New Card</string>
+    <string name="expired">Expired</string>
+    <string name="ccv">CCV</string>
+    <string name="valid_nthru">Valid\nThru</string>
+    <string name="my_card">My Card</string>
+    <string name="account_type">Account Type</string>
+    <string name="status">Status</string>
+    <string name="mark_as_read">Mark as read</string>
+    <string name="wallet">Wallet</string>
+    <string name="cod">Cash On Delivery</string>
+    <string name="cc">Credit Card</string>
+    <string name="debit">Debit Card</string>
+    <string name="paypal">Paypal</string>
+    <string name="order_no">Order No:</string>
+    <string name="order_status">Order Status</string>
+    <string name="confirm_delivery">Confirm Delivery</string>
+    <string name="order">Order</string>
+    <string name="my_reviews">My Reviews</string>
+    <string name="select_payment_method">Select Payment Method</string>
+    <string name="press_again_to_exit">Press again to Exit</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="wish_list">Wishlist</string>
+    <string name="clear_all">Clear All</string>
+    <string name="name">Name</string>
+    <string name="address_line">Address(House No,Building,Street,Area)</string>
+    <string name="address">Address</string>
+    <string name="landmark">Landmark</string>
+    <string name="state">State</string>
+    <string name="country">Country</string>
+    <string name="address_type">Address type</string>
+    <string name="city">City</string>
+    <string name="pincode">Zip Code</string>
+    <string name="work">Work</string>
+    <string name="make_this_as_my_default_account">Make this as my default address</string>
+    <string name="save_address">Save address</string>
+    <string name="sort_by">Sort By</string>
+    <string name="filter">FILTER</string>
+    <string name="sort">SORT</string>
+    <string name="women">WOMEN</string>
+    <string name="close">Close</string>
+    <string name="clear">Clear</string>
+    <string name="thanks_for_your_time">Thanks for your Time</string>
+    <string name="ok">OK</string>
+    <string name="review_submitted">Review Submitted</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="please_wait">Please wait</string>
+
+    <string-array name="state">
+        <item>Select</item>
+        <item>State: 1</item>
+        <item>State: 2</item>
+        <item>State: 3</item>
+        <item>State: 4</item>
+        <item>State: 5</item>
+    </string-array>
+</resources>

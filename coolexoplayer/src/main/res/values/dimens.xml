@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="normal_text">14.5sp</dimen>
+    <dimen name="tiny_text">11sp</dimen>
+    <dimen name="btn_text">16sp</dimen>
+
+    <dimen name="toro_media_button_height">48dp</dimen>
+    <dimen name="toro_media_button_width">65dp</dimen>
+</resources>
