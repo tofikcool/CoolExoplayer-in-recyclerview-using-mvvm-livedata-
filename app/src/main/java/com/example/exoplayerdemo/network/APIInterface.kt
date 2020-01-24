@@ -10,7 +10,7 @@ import retrofit2.http.POST
 interface APIInterface {
 
 
-    @GET("5e21b8592f0000840077d8ad")
+    @GET("5e2adf4b32000077001c6e9e")
     fun getHomeList(): Observable<BaseModel<List<HomeData>>>
 
 }
