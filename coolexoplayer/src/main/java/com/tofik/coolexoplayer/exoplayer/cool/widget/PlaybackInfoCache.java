@@ -36,7 +36,8 @@ final class PlaybackInfoCache extends RecyclerView.AdapterDataObserver {
   /* pkg */ TreeMap<Integer, PlaybackInfo> hotCache; // only cache attached Views.
 
   // Holds the map between Player's order and its key obtain from CacheManager.
-  /* pkg */ TreeMap<Integer, Object> coldKeyToOrderMap = new TreeMap<>(ORDER_COMPARATOR_INT);
+  /* pkg */
+  TreeMap<Integer, Object> coldKeyToOrderMap = new TreeMap<>(ORDER_COMPARATOR_INT);
 
   PlaybackInfoCache(@NonNull Container container) {
     this.container = container;

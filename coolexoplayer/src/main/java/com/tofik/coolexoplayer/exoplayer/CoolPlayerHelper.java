@@ -56,12 +56,16 @@ public abstract class CoolPlayerHelper {
             boolean playWhenReady = (boolean) msg.obj;
             switch (msg.what) {
                 case CoolPlayer.State.STATE_IDLE:
+
                     break;
                 case CoolPlayer.State.STATE_BUFFERING /* Player.STATE_BUFFERING */:
                     internalListener.onBuffering();
-                    for (CoolPlayer.EventListener listener : getEventListeners()) {
+                   /* for (CoolPlayer.EventListener listener : getEventListeners()) {
                         listener.onBuffering();
+
                     }
+                    setVolumeInfo(new VolumeInfo(isMute, (isMute) ? 0f : 1f));*/
+
 
                     break;
                 case CoolPlayer.State.STATE_READY /*  Player.STATE_READY */:
@@ -71,13 +75,13 @@ public abstract class CoolPlayerHelper {
                         internalListener.onPlaying();
 
                     } else {
-                        setVolumeInfo(new VolumeInfo(isMute, (isMute) ? 0f : 1f));
+//                        setVolumeInfo(new VolumeInfo(isMute, (isMute) ? 0f : 1f));
 
                         internalListener.onPaused();
 
                     }
 
-                    for (CoolPlayer.EventListener listener : getEventListeners()) {
+                   /* for (CoolPlayer.EventListener listener : getEventListeners()) {
                         if (playWhenReady) {
                             listener.onPlaying();
 
@@ -85,13 +89,14 @@ public abstract class CoolPlayerHelper {
                             listener.onPaused();
 
                         }
-                    }
+                    }*/
                     break;
                 case CoolPlayer.State.STATE_END /* Player.STATE_ENDED */:
                     internalListener.onCompleted();
-                    for (CoolPlayer.EventListener listener : getEventListeners()) {
+                   /* for (CoolPlayer.EventListener listener : getEventListeners()) {
                         listener.onCompleted();
-                    }
+                    }*/
+
                     break;
                 default:
                     break;

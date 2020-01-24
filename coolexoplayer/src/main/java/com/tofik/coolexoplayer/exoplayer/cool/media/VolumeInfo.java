@@ -1,4 +1,3 @@
-
 package com.tofik.coolexoplayer.exoplayer.cool.media;
 
 import android.os.Parcel;
@@ -9,94 +8,96 @@ import androidx.annotation.FloatRange;
 
 public final class VolumeInfo implements Parcelable {
 
-  // Indicate that the playback is in muted state or not.
-  private boolean mute;
-  // The actual Volume value if 'mute' is false.
-  @FloatRange(from = 0, to = 1) private float volume;
+    public static final Creator<VolumeInfo> CREATOR = new ClassLoaderCreator<VolumeInfo>() {
+        @Override
+        public VolumeInfo createFromParcel(Parcel source, ClassLoader loader) {
+            return new VolumeInfo(source);
+        }
 
-  public VolumeInfo(boolean mute, @FloatRange(from = 0, to = 1) float volume) {
-    this.mute = mute;
-    this.volume = volume;
-  }
+        @Override
+        public VolumeInfo createFromParcel(Parcel source) {
+            return new VolumeInfo(source);
+        }
 
-  public VolumeInfo(VolumeInfo other) {
-    this(other.isMute(), other.getVolume());
-  }
+        @Override
+        public VolumeInfo[] newArray(int size) {
+            return new VolumeInfo[size];
+        }
+    };
+    // Indicate that the playback is in muted state or not.
+    private boolean mute;
+    // The actual Volume value if 'mute' is false.
+    @FloatRange(from = 0, to = 1)
+    private float volume;
 
-  public boolean isMute() {
-    return mute;
-  }
+    public VolumeInfo(boolean mute, @FloatRange(from = 0, to = 1) float volume) {
+        this.mute = mute;
+        this.volume = volume;
+    }
 
-  public void setMute(boolean mute) {
-    this.mute = mute;
-  }
+    public VolumeInfo(VolumeInfo other) {
+        this(other.isMute(), other.getVolume());
+    }
 
-  @FloatRange(from = 0, to = 1) public float getVolume() {
-    return volume;
-  }
+    protected VolumeInfo(Parcel in) {
+        this.mute = in.readByte() != 0;
+        this.volume = in.readFloat();
+    }
 
-  public void setVolume(@FloatRange(from = 0, to = 1) float volume) {
-    this.volume = volume;
-  }
+    public boolean isMute() {
+        return mute;
+    }
 
-  public void setTo(boolean mute, @FloatRange(from = 0, to = 1) float volume) {
-    this.mute = mute;
-    this.volume = volume;
-  }
+    public void setMute(boolean mute) {
+        this.mute = mute;
+    }
 
-  @Override
-  public int describeContents() {
-    return 0;
-  }
+    @FloatRange(from = 0, to = 1)
+    public float getVolume() {
+        return volume;
+    }
 
-  @Override
-  public void writeToParcel(Parcel dest, int flags) {
-    dest.writeByte(this.mute ? (byte) 1 : (byte) 0);
-    dest.writeFloat(this.volume);
-  }
+    public void setVolume(@FloatRange(from = 0, to = 1) float volume) {
+        this.volume = volume;
+    }
 
-  protected VolumeInfo(Parcel in) {
-    this.mute = in.readByte() != 0;
-    this.volume = in.readFloat();
-  }
-
-  public static final Creator<VolumeInfo> CREATOR = new ClassLoaderCreator<VolumeInfo>() {
-    @Override
-    public VolumeInfo createFromParcel(Parcel source, ClassLoader loader) {
-      return new VolumeInfo(source);
+    public void setTo(boolean mute, @FloatRange(from = 0, to = 1) float volume) {
+        this.mute = mute;
+        this.volume = volume;
     }
 
     @Override
-    public VolumeInfo createFromParcel(Parcel source) {
-      return new VolumeInfo(source);
+    public int describeContents() {
+        return 0;
     }
 
     @Override
-    public VolumeInfo[] newArray(int size) {
-      return new VolumeInfo[size];
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeByte(this.mute ? (byte) 1 : (byte) 0);
+        dest.writeFloat(this.volume);
     }
-  };
 
-  @SuppressWarnings("SimplifiableIfStatement") @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    @SuppressWarnings("SimplifiableIfStatement")
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-    VolumeInfo that = (VolumeInfo) o;
+        VolumeInfo that = (VolumeInfo) o;
 
-    if (mute != that.mute) return false;
-    return Float.compare(that.volume, volume) == 0;
-  }
+        if (mute != that.mute) return false;
+        return Float.compare(that.volume, volume) == 0;
+    }
 
-  @Override
-  public int hashCode() {
-    int result = (mute ? 1 : 0);
-    result = 31 * result + (volume != +0.0f ? Float.floatToIntBits(volume) : 0);
-    return result;
-  }
+    @Override
+    public int hashCode() {
+        int result = (mute ? 1 : 0);
+        result = 31 * result + (volume != +0.0f ? Float.floatToIntBits(volume) : 0);
+        return result;
+    }
 
-  @Override
-  public String toString() {
-    return "Vol{" + "mute=" + mute + ", volume=" + volume + '}';
-  }
+    @Override
+    public String toString() {
+        return "Vol{" + "mute=" + mute + ", volume=" + volume + '}';
+    }
 }

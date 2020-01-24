@@ -1,2 +1,1 @@
 include ':app', ':coolexoplayer'
-rootProject.name='ExoplayerDemo'

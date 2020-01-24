@@ -28,7 +28,6 @@ import androidx.core.view.ViewCompat;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.ui.PlayerControlView;
-import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.ui.TimeBar;
 import com.tofik.coolexoplayer.R;
 import com.tofik.coolexoplayer.exoplayer.CoolExo;
@@ -41,246 +40,241 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 
-/**
- * An extension of {@link PlayerControlView} that adds Volume control buttons. It works on-par
- * with {@link PlayerView}. Will be automatically inflated when client uses {}
- * for {@link PlayerView} layout.
- *
- * @author eneim (2018/08/20).
- * @since 3.6.0.2802
- */
-public class CoolControlView extends PlayerControlView  {
+public class CoolControlView extends PlayerControlView {
 
-  @SuppressWarnings("unused") static final String TAG = "CoolExo:Control";
+    @SuppressWarnings("unused")
+    static final String TAG = "CoolExo:Control";
 
-  // Statically obtain from super class.
-  protected static Method hideAfterTimeoutMethod; // from parent ...
-  protected static boolean hideMethodFetched;
-  protected static Field hideActionField;
-  protected static boolean hideActionFetched;
+    // Statically obtain from super class.
+    protected static Method hideAfterTimeoutMethod; // from parent ...
+    protected static boolean hideMethodFetched;
+    protected static Field hideActionField;
+    protected static boolean hideActionFetched;
 
-  final ComponentListener componentListener;
-  final View volumeUpButton;
-  final View volumeOffButton;
-  final TimeBar volumeBar;
-  final VolumeInfo volumeInfo = new VolumeInfo(false, 1);
+    final ComponentListener componentListener;
+    final View volumeUpButton;
+    final View volumeOffButton;
+    final TimeBar volumeBar;
+    final VolumeInfo volumeInfo = new VolumeInfo(false, 1);
 
-  public CoolControlView(Context context) {
-    this(context, null);
-  }
-
-  public CoolControlView(Context context, AttributeSet attrs) {
-    this(context, attrs, 0);
-  }
-
-  public CoolControlView(Context context, AttributeSet attrs, int defStyleAttr) {
-    super(context, attrs, defStyleAttr);
-    volumeOffButton = findViewById(R.id.exo_volume_off);
-    volumeUpButton = findViewById(R.id.exo_volume_up);
-    volumeBar = findViewById(R.id.volume_bar);
-    componentListener = new ComponentListener();
-  }
-
-  @Override
-  public void onAttachedToWindow() {
-    super.onAttachedToWindow();
-    if (volumeUpButton != null) volumeUpButton.setOnClickListener(componentListener);
-    if (volumeOffButton != null) volumeOffButton.setOnClickListener(componentListener);
-    if (volumeBar != null) volumeBar.addListener(componentListener);
-
-    updateVolumeButtons();
-  }
-
-  @Override
-  public void onDetachedFromWindow() {
-    super.onDetachedFromWindow();
-    if (volumeUpButton != null) volumeUpButton.setOnClickListener(null);
-    if (volumeOffButton != null) volumeOffButton.setOnClickListener(null);
-    if (volumeBar != null) volumeBar.removeListener(componentListener);
-    this.setPlayer(null);
-  }
-
-  @SuppressLint("ClickableViewAccessibility") @Override
-  public boolean onTouchEvent(MotionEvent event) {
-    // After processing all children' touch event, this View will just stop it here.
-    // User can click to PlayerView to show/hide this view, but since this View's height is not
-    // significantly large, clicking to show/hide may disturb other actions like clicking to button,
-    // seeking the bars, etc. This extension will stop the touch event here so that PlayerView has
-    // nothing to do when User touch this View.
-    return true;
-  }
-
-  @Override
-  public void setPlayer(Player player) {
-    Player current = super.getPlayer();
-    if (current == player) return;
-
-    if (current instanceof CoolExoPlayer) {
-      ((CoolExoPlayer) current).removeOnVolumeChangeListener(componentListener);
+    public CoolControlView(Context context) {
+        this(context, null);
     }
 
-    super.setPlayer(player);
-    current = super.getPlayer();
-    @NonNull final VolumeInfo tempVol;
-    if (current instanceof CoolExoPlayer) {
-      tempVol = ((CoolExoPlayer) current).getVolumeInfo();
-      ((CoolExoPlayer) current).addOnVolumeChangeListener(componentListener);
-    } else if (current instanceof SimpleExoPlayer) {
-      float volume = ((SimpleExoPlayer) current).getVolume();
-      tempVol = new VolumeInfo(volume == 0, volume);
-    } else {
-      tempVol = new VolumeInfo(false, 1f);
+    public CoolControlView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
     }
 
-    this.volumeInfo.setTo(tempVol.isMute(), tempVol.getVolume());
-    updateVolumeButtons();
-  }
-
-  @Override
-  protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
-    super.onVisibilityChanged(changedView, visibility);
-    if (changedView == this) updateVolumeButtons();
-  }
-
-  @SuppressWarnings("ConstantConditions") //
-  void updateVolumeButtons() {
-    if (!isVisible() || !ViewCompat.isAttachedToWindow(this)) {
-      return;
-    }
-    boolean requestButtonFocus = false;
-    // if muted then show volumeOffButton, or else show volumeUpButton
-    boolean muted = volumeInfo.isMute();
-    if (volumeOffButton != null) {
-      requestButtonFocus |= muted && volumeOffButton.isFocused();
-      volumeOffButton.setVisibility(muted ? View.VISIBLE : View.GONE);
-    }
-    if (volumeUpButton != null) {
-      requestButtonFocus |= !muted && volumeUpButton.isFocused();
-      volumeUpButton.setVisibility(!muted ? View.VISIBLE : View.GONE);
+    public CoolControlView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        volumeOffButton = findViewById(R.id.exo_volume_off);
+        volumeUpButton = findViewById(R.id.exo_volume_up);
+        volumeBar = findViewById(R.id.volume_bar);
+        componentListener = new ComponentListener();
     }
 
-    if (volumeBar != null) {
-      volumeBar.setDuration(100);
-      volumeBar.setPosition(muted ? 0 : (long) (volumeInfo.getVolume() * 100));
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        if (volumeUpButton != null) volumeUpButton.setOnClickListener(componentListener);
+        if (volumeOffButton != null) volumeOffButton.setOnClickListener(componentListener);
+        if (volumeBar != null) volumeBar.addListener(componentListener);
+
+        updateVolumeButtons();
     }
 
-    if (requestButtonFocus) {
-      requestButtonFocus();
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (volumeUpButton != null) volumeUpButton.setOnClickListener(null);
+        if (volumeOffButton != null) volumeOffButton.setOnClickListener(null);
+        if (volumeBar != null) volumeBar.removeListener(componentListener);
+        this.setPlayer(null);
     }
 
-    // A hack to access PlayerControlView's hideAfterTimeout. Don't want to re-implement it.
-    // Reflection happens once for all instances, so it should not affect the performance.
-    if (!hideMethodFetched) {
-      try {
-        hideAfterTimeoutMethod = PlayerControlView.class.getDeclaredMethod("hideAfterTimeout");
-        hideAfterTimeoutMethod.setAccessible(true);
-      } catch (NoSuchMethodException e) {
-        e.printStackTrace();
-      }
-      hideMethodFetched = true;
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // After processing all children' touch event, this View will just stop it here.
+        // User can click to PlayerView to show/hide this view, but since this View's height is not
+        // significantly large, clicking to show/hide may disturb other actions like clicking to button,
+        // seeking the bars, etc. This extension will stop the touch event here so that PlayerView has
+        // nothing to do when User touch this View.
+        return true;
     }
 
-    if (hideAfterTimeoutMethod != null) {
-      try {
-        hideAfterTimeoutMethod.invoke(this);
-      } catch (IllegalAccessException e) {
-        e.printStackTrace();
-      } catch (InvocationTargetException e) {
-        e.printStackTrace();
-      }
-    }
-  }
+    @Override
+    public void setPlayer(Player player) {
+        Player current = super.getPlayer();
+        if (current == player) return;
 
-  private void requestButtonFocus() {
-    boolean muted = volumeInfo.isMute();
-    if (!muted && volumeUpButton != null) {
-      volumeUpButton.requestFocus();
-    } else if (muted && volumeOffButton != null) {
-      volumeOffButton.requestFocus();
-    }
-  }
+        if (current instanceof CoolExoPlayer) {
+            ((CoolExoPlayer) current).removeOnVolumeChangeListener(componentListener);
+        }
 
-  void dispatchOnScrubStart() {
-    // Fetch the 'hideAction' Runnable from super class. We need this to synchronize the show/hide
-    // behaviour when user does something.
-    if (!hideActionFetched) {
-      try {
-        hideActionField = PlayerControlView.class.getDeclaredField("hideAction");
-        hideActionField.setAccessible(true);
-      } catch (NoSuchFieldException e) {
-        e.printStackTrace();
-      }
-      hideActionFetched = true;
+        super.setPlayer(player);
+        current = super.getPlayer();
+        @NonNull final VolumeInfo tempVol;
+        if (current instanceof CoolExoPlayer) {
+            tempVol = ((CoolExoPlayer) current).getVolumeInfo();
+            ((CoolExoPlayer) current).addOnVolumeChangeListener(componentListener);
+        } else if (current instanceof SimpleExoPlayer) {
+            float volume = ((SimpleExoPlayer) current).getVolume();
+            tempVol = new VolumeInfo(volume == 0, volume);
+        } else {
+            tempVol = new VolumeInfo(false, 1f);
+        }
+
+        this.volumeInfo.setTo(tempVol.isMute(), tempVol.getVolume());
+        updateVolumeButtons();
     }
 
-    if (hideActionField != null) {
-      try {
-        removeCallbacks((Runnable) hideActionField.get(this));
-      } catch (IllegalAccessException e) {
-        e.printStackTrace();
-      }
-    }
-  }
-
-  // Scrub Move will always modify actual Volume, there is no 'mute-with-non-zero-volume' state.
-  @SuppressLint("RestrictedApi")
-  void dispatchOnScrubMove(long position) {
-    if (position > 100) position = 100;
-    if (position < 0) position = 0;
-
-    float actualVolume = position / (float) 100;
-    this.volumeInfo.setTo(actualVolume == 0, actualVolume);
-    if (getPlayer() instanceof SimpleExoPlayer) {
-      CoolExo.setVolumeInfo((SimpleExoPlayer) getPlayer(), this.volumeInfo);
+    @Override
+    protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
+        super.onVisibilityChanged(changedView, visibility);
+        if (changedView == this) updateVolumeButtons();
     }
 
-    updateVolumeButtons();
-  }
+    @SuppressWarnings("ConstantConditions")
+        //
+    void updateVolumeButtons() {
+        if (!isVisible() || !ViewCompat.isAttachedToWindow(this)) {
+            return;
+        }
+        boolean requestButtonFocus = false;
+        // if muted then show volumeOffButton, or else show volumeUpButton
+        boolean muted = volumeInfo.isMute();
+        if (volumeOffButton != null) {
+            requestButtonFocus |= muted && volumeOffButton.isFocused();
+            volumeOffButton.setVisibility(muted ? View.VISIBLE : View.GONE);
+        }
+        if (volumeUpButton != null) {
+            requestButtonFocus |= !muted && volumeUpButton.isFocused();
+            volumeUpButton.setVisibility(!muted ? View.VISIBLE : View.GONE);
+        }
 
-  void dispatchOnScrubStop(long position) {
-    this.dispatchOnScrubMove(position);
-  }
+        if (volumeBar != null) {
+            volumeBar.setDuration(100);
+            volumeBar.setPosition(muted ? 0 : (long) (volumeInfo.getVolume() * 100));
+        }
 
-  private class ComponentListener
-      implements View.OnClickListener, TimeBar.OnScrubListener, CoolPlayer.OnVolumeChangeListener {
+        if (requestButtonFocus) {
+            requestButtonFocus();
+        }
 
+        // A hack to access PlayerControlView's hideAfterTimeout. Don't want to re-implement it.
+        // Reflection happens once for all instances, so it should not affect the performance.
+        if (!hideMethodFetched) {
+            try {
+                hideAfterTimeoutMethod = PlayerControlView.class.getDeclaredMethod("hideAfterTimeout");
+                hideAfterTimeoutMethod.setAccessible(true);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+            hideMethodFetched = true;
+        }
+
+        if (hideAfterTimeoutMethod != null) {
+            try {
+                hideAfterTimeoutMethod.invoke(this);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void requestButtonFocus() {
+        boolean muted = volumeInfo.isMute();
+        if (!muted && volumeUpButton != null) {
+            volumeUpButton.requestFocus();
+        } else if (muted && volumeOffButton != null) {
+            volumeOffButton.requestFocus();
+        }
+    }
+
+    void dispatchOnScrubStart() {
+        // Fetch the 'hideAction' Runnable from super class. We need this to synchronize the show/hide
+        // behaviour when user does something.
+        if (!hideActionFetched) {
+            try {
+                hideActionField = PlayerControlView.class.getDeclaredField("hideAction");
+                hideActionField.setAccessible(true);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            }
+            hideActionFetched = true;
+        }
+
+        if (hideActionField != null) {
+            try {
+                removeCallbacks((Runnable) hideActionField.get(this));
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Scrub Move will always modify actual Volume, there is no 'mute-with-non-zero-volume' state.
     @SuppressLint("RestrictedApi")
-    @Override
-    public void onClick(View v) {
-      Player player = CoolControlView.super.getPlayer();
-      if (!(player instanceof SimpleExoPlayer)) return;
-      if (v == volumeOffButton) {  // click to vol Off --> unmute
-        volumeInfo.setTo(false, volumeInfo.getVolume());
-      } else if (v == volumeUpButton) {  // click to vol Up --> mute
-        volumeInfo.setTo(true, volumeInfo.getVolume());
-      }
-      CoolExo.setVolumeInfo((SimpleExoPlayer) player, volumeInfo);
-      updateVolumeButtons();
+    void dispatchOnScrubMove(long position) {
+        if (position > 100) position = 100;
+        if (position < 0) position = 0;
+
+        float actualVolume = position / (float) 100;
+        this.volumeInfo.setTo(actualVolume == 0, actualVolume);
+        if (getPlayer() instanceof SimpleExoPlayer) {
+            CoolExo.setVolumeInfo((SimpleExoPlayer) getPlayer(), this.volumeInfo);
+        }
+
+        updateVolumeButtons();
     }
 
-    /// TimeBar.OnScrubListener
-
-    @Override
-    public void onScrubStart(TimeBar timeBar, long position) {
-      dispatchOnScrubStart();
+    void dispatchOnScrubStop(long position) {
+        this.dispatchOnScrubMove(position);
     }
 
-    @Override
-    public void onScrubMove(TimeBar timeBar, long position) {
-      dispatchOnScrubMove(position);
-    }
+    private class ComponentListener
+            implements View.OnClickListener, TimeBar.OnScrubListener, CoolPlayer.OnVolumeChangeListener {
 
-    @Override
-    public void onScrubStop(TimeBar timeBar, long position, boolean canceled) {
-      dispatchOnScrubStop(position);
-    }
+        @SuppressLint("RestrictedApi")
+        @Override
+        public void onClick(View v) {
+            Player player = CoolControlView.super.getPlayer();
+            if (!(player instanceof SimpleExoPlayer)) return;
+            if (v == volumeOffButton) {  // click to vol Off --> unmute
+                volumeInfo.setTo(false, volumeInfo.getVolume());
+            } else if (v == volumeUpButton) {  // click to vol Up --> mute
+                volumeInfo.setTo(true, volumeInfo.getVolume());
+            }
+            CoolExo.setVolumeInfo((SimpleExoPlayer) player, volumeInfo);
+            updateVolumeButtons();
+        }
 
-    /// CoolPlayer.OnVolumeChangeListener
+        /// TimeBar.OnScrubListener
 
-    @Override
-    public void onVolumeChanged(@NonNull VolumeInfo volumeInfo) {
-      CoolControlView.this.volumeInfo.setTo(volumeInfo.isMute(), volumeInfo.getVolume());
-      updateVolumeButtons();
+        @Override
+        public void onScrubStart(TimeBar timeBar, long position) {
+            dispatchOnScrubStart();
+        }
+
+        @Override
+        public void onScrubMove(TimeBar timeBar, long position) {
+            dispatchOnScrubMove(position);
+        }
+
+        @Override
+        public void onScrubStop(TimeBar timeBar, long position, boolean canceled) {
+            dispatchOnScrubStop(position);
+        }
+
+        /// CoolPlayer.OnVolumeChangeListener
+
+        @Override
+        public void onVolumeChanged(@NonNull VolumeInfo volumeInfo) {
+            CoolControlView.this.volumeInfo.setTo(volumeInfo.isMute(), volumeInfo.getVolume());
+            updateVolumeButtons();
+        }
     }
-  }
 }
