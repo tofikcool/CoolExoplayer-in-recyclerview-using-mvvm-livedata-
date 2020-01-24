@@ -1,10 +1,10 @@
-package com.example.exoplayerdemo.view
+package com.tofik.exoplayerdemo.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import com.example.exoplayerdemo.R
-import com.example.exoplayerdemo.databinding.ActivityMainBinding
+import com.tofik.exoplayerdemo.R
+import com.tofik.exoplayerdemo.databinding.ActivityMainBinding
 import com.tofik.coolexoplayer.exoplayer.cool.widget.PressablePlayerSelector
 import kotlinx.android.synthetic.main.activity_main.*
 

@@ -1,14 +1,12 @@
-package com.example.exoplayerdemo.view
+package com.tofik.exoplayerdemo.view
 
 import android.content.Context
 import android.net.Uri
-import android.provider.ContactsContract
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 
-import com.example.exoplayerdemo.databinding.ItemHomeBinding
-import com.example.exoplayerdemo.utils.Data
+import com.tofik.exoplayerdemo.databinding.ItemHomeBinding
+import com.tofik.exoplayerdemo.utils.Data
 import com.google.android.exoplayer2.ui.PlayerView
 import com.tofik.coolexoplayer.exoplayer.ExoPlayerDispatcher
 import com.tofik.coolexoplayer.exoplayer.ExoPlayerViewHelper
@@ -18,7 +16,6 @@ import com.tofik.coolexoplayer.exoplayer.cool.media.PlaybackInfo
 import com.tofik.coolexoplayer.exoplayer.cool.media.VolumeInfo
 import com.tofik.coolexoplayer.exoplayer.cool.widget.Container
 import com.tofik.coolexoplayer.exoplayer.cool.widget.PressablePlayerSelector
-import com.tofik.coolexoplayer.exoplayer.ui.CoolControlView
 
 class HomeViewHolder(
     val binding: ItemHomeBinding,

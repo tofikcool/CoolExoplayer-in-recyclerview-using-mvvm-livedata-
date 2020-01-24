@@ -1,4 +1,4 @@
-package com.example.exoplayerdemo.extentions
+package com.tofik.exoplayerdemo.extentions
 import android.app.Activity
 import android.content.Context
 import android.view.View

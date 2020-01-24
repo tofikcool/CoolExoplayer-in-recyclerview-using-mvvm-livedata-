@@ -1,14 +1,12 @@
-package com.example.exoplayerdemo.view
+package com.tofik.exoplayerdemo.view
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.exoplayerdemo.R
-import com.example.exoplayerdemo.databinding.ItemHomeBinding
-import com.example.exoplayerdemo.view.HomeData
-import com.example.exoplayerdemo.view.HomeViewHolder
+import com.tofik.exoplayerdemo.R
+import com.tofik.exoplayerdemo.databinding.ItemHomeBinding
 import com.tofik.coolexoplayer.exoplayer.cool.widget.PressablePlayerSelector
 
 

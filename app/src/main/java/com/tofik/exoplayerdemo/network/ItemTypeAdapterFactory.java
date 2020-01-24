@@ -1,4 +1,4 @@
-package com.example.exoplayerdemo.network;
+package com.tofik.exoplayerdemo.network;
 
 import android.util.Log;
 

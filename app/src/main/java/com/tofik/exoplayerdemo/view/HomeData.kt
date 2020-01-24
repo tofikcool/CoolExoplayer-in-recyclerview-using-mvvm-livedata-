@@ -1,4 +1,4 @@
-package com.example.exoplayerdemo.view
+package com.tofik.exoplayerdemo.view
 import com.google.gson.annotations.SerializedName
 
 

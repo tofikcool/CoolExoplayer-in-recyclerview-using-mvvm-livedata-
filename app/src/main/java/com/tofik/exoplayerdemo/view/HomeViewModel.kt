@@ -1,11 +1,11 @@
-package com.example.exoplayerdemo.view
+package com.tofik.exoplayerdemo.view
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.exoplayerdemo.network.BaseModel
-import com.example.exoplayerdemo.network.CallbackObserver
-import com.example.exoplayerdemo.network.Networking
+import com.tofik.exoplayerdemo.network.BaseModel
+import com.tofik.exoplayerdemo.network.CallbackObserver
+import com.tofik.exoplayerdemo.network.Networking
 import com.tofik.coolexoplayer.exoplayer.cool.widget.PressablePlayerSelector
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

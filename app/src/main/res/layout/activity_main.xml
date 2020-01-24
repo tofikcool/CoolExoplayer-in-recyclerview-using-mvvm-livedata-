@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="com.example.exoplayerdemo.view.HomeViewModel" />
+            type="com.tofik.exoplayerdemo.view.HomeViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

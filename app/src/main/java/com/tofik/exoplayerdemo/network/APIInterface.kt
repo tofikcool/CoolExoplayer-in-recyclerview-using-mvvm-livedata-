@@ -1,11 +1,8 @@
-package com.example.exoplayerdemo.network
+package com.tofik.exoplayerdemo.network
 
-import com.example.exoplayerdemo.view.HomeData
+import com.tofik.exoplayerdemo.view.HomeData
 import io.reactivex.Observable
-import okhttp3.RequestBody
-import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.POST
 
 interface APIInterface {
 

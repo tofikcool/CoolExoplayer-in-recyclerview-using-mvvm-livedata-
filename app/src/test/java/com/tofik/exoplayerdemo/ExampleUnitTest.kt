@@ -1,4 +1,4 @@
-package com.example.exoplayerdemo
+package com.tofik.exoplayerdemo
 
 import org.junit.Test
 

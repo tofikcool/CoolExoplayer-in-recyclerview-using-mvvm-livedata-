@@ -1,4 +1,4 @@
-package com.example.exoplayerdemo.utils
+package com.tofik.exoplayerdemo.utils
 
 object Data {
 

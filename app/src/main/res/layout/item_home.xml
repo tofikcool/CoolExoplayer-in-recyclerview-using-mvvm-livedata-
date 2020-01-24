@@ -11,11 +11,11 @@
 
         <variable
             name="data"
-            type="com.example.exoplayerdemo.view.HomeData" />
+            type="com.tofik.exoplayerdemo.view.HomeData" />
 
         <variable
             name="holder"
-            type="com.example.exoplayerdemo.view.HomeViewHolder" />
+            type="com.tofik.exoplayerdemo.view.HomeViewHolder" />
     </data>
 
     <LinearLayout

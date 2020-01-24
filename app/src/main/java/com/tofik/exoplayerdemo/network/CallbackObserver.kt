@@ -1,4 +1,4 @@
-package com.example.exoplayerdemo.network
+package com.tofik.exoplayerdemo.network
 
 import android.os.StrictMode
 import io.reactivex.observers.DisposableObserver

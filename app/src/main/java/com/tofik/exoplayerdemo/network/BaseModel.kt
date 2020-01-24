@@ -1,4 +1,4 @@
-package com.example.exoplayerdemo.network
+package com.tofik.exoplayerdemo.network
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
